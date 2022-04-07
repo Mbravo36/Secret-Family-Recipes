@@ -10,6 +10,12 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
+server.get('/', (req, res) => {
+    res.send(`
+        Hello and welcome to the Recipes API!
+        `);
+});
+
 server.use('/api/users', usersRouter);
 server.use('/api/auth', authRouter);
 server.use('/api/posts', postRouter);
@@ -22,3 +28,7 @@ server.use((err, req, res, next) => { //eslint-disable-line
 });
 
 module.exports = server;
+
+
+
+
