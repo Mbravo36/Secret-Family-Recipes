@@ -10,7 +10,7 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
-server.use('api/users', usersRouter);
+server.use('/api/users', usersRouter);
 server.use('/api/auth', authRouter);
 server.use('/api/posts', postRouter);
 

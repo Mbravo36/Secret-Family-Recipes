@@ -22,7 +22,7 @@ router.post('/login', validateData, (req, res, next) => {
     let { username, password } = req.body
         Users.findBy({ username })
          .then(([user]) => {
-            if(bcrypt.compareSync(password, user.password)) {
+            if(user && bcrypt.compareSync(password, user.password)) {
                 const token = generateToken(user);
                 res.status(200).status.json({
                     message: `Welcome ${user.username}!`,
