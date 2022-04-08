@@ -24,13 +24,18 @@ The goal for this project is to facilitate the keeping of family recipes for tho
 - findById 
 - Build out the routers / make sure they work 
 
-    AUTH:
+    __AUTH:__
+
     `[POST] /api/auth/register`
+
     `[POST] /api/auth/login`
 
-    USERS:
+    __USERS:__
+
     `[POST] /api/users`
+
     `[POST] /api/users/:users_id`
+    
     `Build out the middleware and incorporate it`
 
 ## Users Schema
