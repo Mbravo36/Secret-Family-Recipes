@@ -1,20 +1,31 @@
 // Update with your config settings.
+require('dotenv').config()
+
+const pg = require('pg')
+
+if (process.env.DATABASE_URL) {
+  pg.defaults.ssl = { rejectUnauthorized: false }
+}
 
 const sharedConfig = {
-  client: 'sqlite3',
+  client: 'pg',
   useNullAsDefault: true,
   migrations: { directory: './data/migrations' },
-  pool: { afterCreate: (conn, done) => conn.run('PRAGMA foreign_keys = ON', done) },
+  seeds: { directory: './data/seeds' },
 }
 
 module.exports = {
   development: {
     ...sharedConfig,
-    connection: { filename: './data/database.db3' },
-    seeds: { directory: './data/seeds' },
+    connection: process.env.DEV_DATABASE_URL,
   },
   testing: {
     ...sharedConfig,
-    connection: { filename: './data/test.db3' },
+    connection: process.env.TESTING_DEV_DATABASE_URL,
   },
+  production: {
+    ...sharedConfig,
+    connection: process.env.DATABASE_URL,
+    pool: { min: 2, max:10 },
+  }
 };

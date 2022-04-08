@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
-  return knex.schema.
-    createTable('users', users => {
+  return knex.schema
+  .createTable('users', users => {
       users.increments('user_id')
       users.string('username', 128).notNullable().unique()
       users.string('password', 128).notNullable()
@@ -13,7 +13,7 @@ exports.up = function(knex) {
         posts.string('recipe', 5000)
         posts.string('username', 128)
             .notNullable()
-            .references('userName')
+            .references('username')
             .inTable('users')
             .onUpdate('RESTRICT')
             .onDelete('RESTRICT')
