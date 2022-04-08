@@ -9,6 +9,9 @@
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
+    "migrateh": "heroku run knex migrate:latest -a secret-family-recipes-web",
+    "rollbackh": "heroku run knex migrate:rollback -a secret-family-recipes-web",
+    "databaseh": "heroku pg:psql -a secret-family-recipes-web",
     "test": "cross-env NODE_ENV=testing jest --verbose --runInBand --silent"
   },
   "repository": {
